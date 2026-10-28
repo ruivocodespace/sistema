@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS cursos (
   ativo tinyint(1) NOT NULL DEFAULT '1',
   criado_em timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
+  ALTER TABLE cursos ADD COLUMN professor VARCHAR(150) NULL AFTER descricao;
   KEY modulo_id (modulo_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
