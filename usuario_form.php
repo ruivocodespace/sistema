@@ -22,7 +22,7 @@ if (isset($_GET["excluir"])) {
     }else{
         $erro = "Erro ao excluir usuário.";       
     }
-
+}
 
 // Verificar se o formulário de cadastro foi enviado
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
