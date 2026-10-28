@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $modulo_id = intval($_POST["modulo_id"]);
     $titulo    = mysqli_real_escape_string($conexao, trim($_POST["titulo"]));
     $descricao = mysqli_real_escape_string($conexao, trim($_POST["descricao"]));
-    $professor = mysqli_real_escape_string($conexao, trim($_POST["professor"])); // NOVO CAMPO
     $ativo     = isset($_POST["ativo"]) ? 1 : 0;
     $capa_antiga = $editando["capa"] ?? "";
     $capa      = $capa_antiga;
@@ -90,18 +89,10 @@ require_once "includes/menu.php";
             <div class="bg-white rounded-xl shadow-sm p-6">
                 <form method="post" enctype="multipart/form-data">
                     <input type="hidden" value="<?= $editando['id'] ?? "" ?>" name="id"/>
-                    
                     <div class="mb-4">
                         <label class="form-label">Título *</label>
                         <input type="text" name="titulo" class="form-input" required maxlength="150" placeholder="Ex: PHP do Zero" value="<?= htmlspecialchars($editando['titulo'] ?? "") ?>">
                     </div>
-
-                    <!-- NOVO CAMPO: PROFESSOR -->
-                    <div class="mb-4">
-                        <label class="form-label">Professor Responsável</label>
-                        <input type="text" name="professor" class="form-input" maxlength="150" placeholder="Ex: João Silva" value="<?= htmlspecialchars($editando['professor'] ?? "") ?>">
-                    </div>
-                    
                     <div class="mb-4">
                         <label class="form-label">Descrição *</label>
                         <textarea name="descricao" class="form-input" rows="4" required placeholder="Sobre o que é o curso"><?= htmlspecialchars($editando['descricao'] ?? "") ?></textarea>
@@ -114,6 +105,10 @@ require_once "includes/menu.php";
                                 <option value="<?= $m["id"] ?>" <?= $m["id"] == ($editando["modulo_id"] ?? 0) ? "selected" : "" ?>><?= htmlspecialchars($m["titulo"]) ?></option>
                             <?php endwhile; ?>
                         </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Professor *</label>
+                        <input type="text" name="professor" class="form-input" required maxlength="150" placeholder="Ex: João Silva" value="<?= htmlspecialchars($editando['professor'] ?? "") ?>">
                     </div>
                     <div class="mb-4">
                         <label class="form-label">Capa</label>
