@@ -16,7 +16,12 @@ if (isset($_GET["excluir"])) {
     $id = $_GET["excluir"];
     $sql = "DELETE FROM usuarios WHERE id = '$id'";
     $res = mysqli_query($conexao, $sql);
-}
+    if ($res) {
+        header("Location: usuario.php");
+        exit;
+    }else{
+        $erro = "Erro ao excluir usuário.";       
+    }
 
 
 // Verificar se o formulário de cadastro foi enviado
