@@ -2,8 +2,8 @@
 session_start();
 require_once "conexao.php";
 
-$db = $conexao ?? $pdo ?? $conn ?? null;
-if (!$db) {
+$pdo = $conexao ?? $pdo ?? $conn ?? null;
+if (!$pdo) {
     die("Erro: Conexão com o banco de dados não encontrada.");
 }
 
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         try {
             // BUSCAR O USUÁRIO NO BANCO PELO EMAIL
             $sql = "SELECT * FROM usuarios WHERE email = :email";
-            $stmt = $db->prepare($sql);
+            $stmt = $pdo->prepare($sql);
             $stmt->execute([':email' => $email]);
 
             $usuario = $stmt->fetch();
