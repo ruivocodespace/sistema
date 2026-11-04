@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nome  = $_POST["nome"];
     $email = $_POST["email"];
     $senha = $_POST["senha"];
-    $tipo = 'admin';
+    $tipo = $_POST["tipo"];
   
     $sql = "SELECT * FROM usuarios WHERE email = '$email'";
     $resultado = mysqli_query($conexao, $sql);
@@ -101,8 +101,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <label class="form-label">Senha *</label>
                         <input type="password" name="senha" class="form-input" required placeholder="****">
                     </div>
-                  
-                    <div class="flex gap-2">
+                    <div class="mb-4">
+                        <label class="form-label">Tipo de Usuário *</label>
+                        <select name="tipo" class="form-input" required>
+                            <option value="" disabled selected>Selecione o tipo de usuário</option>
+                            <option value="admin">Admin</option>
+                            <option value="aluno">Aluno</option>
+                            <option value="tutor">Tutor</option>
+                        </select>
+                    </div>
+                        <div class="flex gap-2">
                         <button type="submit" class="bg-senai-blue text-white font-bold px-5 py-2.5 rounded-lg text-sm hover:bg-senai-blue-dark transition">💾 Salvar</button>
                         <a href="modulos.html" class="bg-gray-100 text-gray-600 font-semibold px-5 py-2.5 rounded-lg text-sm hover:bg-gray-200 transition">Cancelar</a>
                     </div>

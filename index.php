@@ -2,6 +2,8 @@
 session_start();
 require_once "conexao.php";
 require_once "includes/menu.php";
+require_once "includes/logado.php";
+require_once "includes/sessao.php";
 
 $sql = "SELECT
     (SELECT COUNT(*) FROM cursos) AS cursos,

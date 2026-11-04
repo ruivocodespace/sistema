@@ -5,13 +5,19 @@ require_once "includes/menu.php";
 
 $sucesso = "";
 $erro = "";
-$editando = NULL;
+$editando = NULL;  
 
-
-
-
- 
-    
+if (isset($_GET["excluir"])) {
+    $id = $_GET["excluir"];
+    $sql = "DELETE FROM usuarios WHERE id = '$id'";
+    $res = mysqli_query($conexao, $sql);
+    if ($res) {
+        header("Location: usuario.php");
+        exit;
+    }else{
+        $erro = "Erro ao excluir usuário.";       
+    }
+}
 
 
 // Buscar todos os cliente para listar
@@ -23,8 +29,8 @@ $editando = NULL;
         <!-- TOPBAR -->
         <div class="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
             <div>
-                <h1 class="text-xl font-extrabold text-gray-800">Gerenciar Cursos</h1>
-                <p class="text-sm text-gray-500">Cadastre, edite e organize os cursos da plataforma</p>
+                <h1 class="text-xl font-extrabold text-gray-800">Gerenciar Usuários</h1>
+                <p class="text-sm text-gray-500">Cadastre, edite e organize os usuários</p>
             </div>
             <a href="curso_form.html" class="bg-senai-green text-white font-bold px-4 py-2.5 rounded-lg text-sm hover:bg-green-600 transition flex items-center gap-2">
                 + Novo Curso
