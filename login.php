@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once "conexao.php";
 
 $pdo = $conexao ?? $pdo ?? $conn ?? null;
@@ -23,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         try {
             // BUSCAR O USUÁRIO NO BANCO PELO EMAIL
             $sql = "SELECT * FROM usuarios WHERE email = :email";
-            $stmt = $pdo->prepare($sql);
+            $stmt = $conexao->prepare($sql);
             $stmt->execute([':email' => $email]);
 
             $usuario = $stmt->fetch();

@@ -44,8 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             nome = '$nome',
             email = '$email'
             WHERE id = $id
-            ";
-    
+            ";    
             $sucesso = "Usuário atualizado com sucesso!";
         }else{
             $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
@@ -56,16 +55,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if (!mysqli_query($conexao, $sql)) {
             $erro = "Erro ao cadastrar usuário.";
-        }
-        
+        }        
     }
-}
- 
-    
-
-
+}  
 // Buscar todos os cliente para listar
-
 ?>
 
 
@@ -87,9 +80,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="flex items-center gap-2 text-xs text-gray-400 mb-1">
                 <a href="cursos.html" class="hover:text-senai-blue">Cursos</a> ›
                 <a href="modulos.html" class="hover:text-senai-blue">Módulos</a> ›
-                <span class="text-gray-700 font-semibold">Editar Módulo</span>
+                <span class="text-gray-700 font-semibold">Cadastrar</span>
             </div>
-            <h1 class="text-xl font-extrabold text-gray-800">Editar Módulo</h1>
+            <h1 class="text-xl font-extrabold text-gray-800">Cadastrar ADMIN</h1>
         </div>
         <div class="p-6 flex-1 max-w-xl">
             <div class="bg-white rounded-xl shadow-sm p-6">
